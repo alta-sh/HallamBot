@@ -16,7 +16,8 @@ namespace HallamBot.Events
             DateTime postStartUpTime = DateTime.UtcNow;
 
             PrintInit();
-            Console.WriteLine($"\nStartup time: {(postStartUpTime - HallamBot.Program.preStartUpTime).TotalSeconds.ToString()} seconds...\n");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"\n [Startup time: {(postStartUpTime - HallamBot.Program.preStartUpTime).TotalSeconds.ToString()} seconds] "); Console.BackgroundColor = ConsoleColor.Black;
 
 
             var status = new DiscordActivity("Hallam CS Activity", DSharpPlus.Entities.ActivityType.Watching);
