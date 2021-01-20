@@ -19,9 +19,9 @@ namespace HallamBot
 
         static async Task MainAsync()
         {
-            Bot.Init();
+            Init.Bot.Init();
 
-            await Bot.DiscordCtx.ConnectAsync();
+            await Init.Bot.DiscordCtx.ConnectAsync();
             await Task.Delay(-1);
         }
     }

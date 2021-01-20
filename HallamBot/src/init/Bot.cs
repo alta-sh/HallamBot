@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DSharpPlus.Entities;
 
-namespace HallamBot
+namespace HallamBot.Init
 {
     public static class Bot
     {
@@ -21,7 +21,7 @@ namespace HallamBot
             });
 
             DiscordCtx = discord;
-            DiscordCtx.Ready += Events.DiscordCtx_Ready;
+            DiscordCtx.Ready += Events.Triggers.DiscordCtx_Ready;
         }
 
         

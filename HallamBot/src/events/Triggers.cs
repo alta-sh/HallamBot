@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using DSharpPlus.Entities;
 
-namespace HallamBot
+namespace HallamBot.Events
 {
-    public static class Events
+    public static class Triggers
     {
         public static Task DiscordCtx_Ready(DiscordClient sender, DSharpPlus.EventArgs.ReadyEventArgs e)
         {
