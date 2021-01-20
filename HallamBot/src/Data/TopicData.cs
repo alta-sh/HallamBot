@@ -8,5 +8,6 @@ namespace HallamBot.Data
     public static class TopicData
     {
         public static TopicList CsTopics { get; set; }
+        public static TopicList SoftEngTopics { get; set; }
     }
 }

@@ -34,7 +34,23 @@ namespace HallamBot.Events
 
             Console.WriteLine("Building Models...\n");
             BuildModels();
-            Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine(Data.TopicData.CsTopics.Subject.ToString() + " Data Model");
+            if (Data.TopicData.CsTopics != null)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine(Data.TopicData.CsTopics.Subject.ToString() + " Data Model exists.");
+            } 
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("COMPUTER SCIENCE Data Model does not exist.");
+            }
+
+            if (Data.TopicData.SoftEngTopics != null)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine(Data.TopicData.SoftEngTopics.Subject.ToString() + " Data Model exists.");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("SOFTWARE ENGINEERING Data Model does not exist.");
+            }
 
             Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Models successfully built!"); Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n\nListening...\n");
