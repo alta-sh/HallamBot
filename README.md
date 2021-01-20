@@ -1,4 +1,4 @@
-![alt text](https://imgur.com/uHL3ZnE)
+![Logo](https://i.imgur.com/uHL3ZnE.jpg)
 
 # HallamBot
 HallamBot is a Discord bot made in .Net Core using the DSharp Discord API Wrapper. 
