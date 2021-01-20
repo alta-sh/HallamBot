@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DSharpPlus.Entities;
 using System.Threading;
+using HallamBot.Models;
 
 namespace HallamBot.Events
 {
@@ -26,8 +27,21 @@ namespace HallamBot.Events
 
             Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine("\n--------------------- All Systems Online ---------------------"); Console.ForegroundColor = ConsoleColor.White;
 
+            Console.WriteLine("Building Models...");
+            BuildModels();
+            Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Models successfully built!"); Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n\nListening...\n");
             return Task.CompletedTask;
+        }
+
+        private static void BuildModels()
+        {
+            Data.TopicData.CsTopics = new TopicList(Subject.COMPUTER_SCIENCE);
+            
+            foreach(var topic in Data.TopicData.CsTopics.Topics)
+            {
+                topic.BuildAssignments();
+            }
         }
 
         private static void PrintInit()
