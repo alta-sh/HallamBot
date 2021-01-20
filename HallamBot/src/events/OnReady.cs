@@ -7,9 +7,9 @@ using DSharpPlus.Entities;
 
 namespace HallamBot.Events
 {
-    public static class Triggers
+    public static class OnReady
     {
-        public static Task DiscordCtx_Ready(DiscordClient sender, DSharpPlus.EventArgs.ReadyEventArgs e)
+        public static Task OnTrigger(DiscordClient sender, DSharpPlus.EventArgs.ReadyEventArgs e)
         {
             string onLoadGreeting = @"
                              | |  | |     | | |               |  _ \      | |  

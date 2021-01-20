@@ -21,7 +21,7 @@ namespace HallamBot.Init
             });
 
             DiscordCtx = discord;
-            DiscordCtx.Ready += Events.Triggers.DiscordCtx_Ready;
+            DiscordCtx.Ready += Events.OnReady.OnTrigger;
         }
 
         
