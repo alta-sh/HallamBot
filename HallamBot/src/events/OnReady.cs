@@ -27,8 +27,22 @@ namespace HallamBot.Events
 
             Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine("\n--------------------- All Systems Online ---------------------"); Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine("Building Models...");
+            Console.WriteLine("Building Models...\n");
             BuildModels();
+            Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine(Data.TopicData.CsTopics.Subject.ToString() + " Data Model:");
+            foreach (var module in Data.TopicData.CsTopics.Topics)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"\n\t{module.Name}: ");
+                
+                foreach(var assignment in module.Assignments)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine($"\t\t {assignment.AssignmentTitle} - {assignment.Percentage}% - [{assignment.Semester.ToString().ToUpper()} SEMESTER]\n" +
+                        $"\t\t Deadline: {assignment.Deadline.ToShortDateString()} | Feedback {assignment.FeedbackReturn.ToShortDateString()}\n");
+                }
+
+            }
             Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Models successfully built!"); Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n\nListening...\n");
             return Task.CompletedTask;
