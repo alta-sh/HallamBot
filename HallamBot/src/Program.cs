@@ -12,8 +12,10 @@ namespace HallamBot
 {
     class Program
     {
+        public static DateTime preStartUpTime;
         static void Main(string[] args)
         {
+            preStartUpTime = DateTime.UtcNow;
             MainAsync().GetAwaiter().GetResult();
         }
 

@@ -4,12 +4,32 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using DSharpPlus.Entities;
+using System.Threading;
 
 namespace HallamBot.Events
 {
     public static class OnReady
     {
+        private static readonly DiscordClient ctx = Init.Bot.DiscordCtx;
         public static Task OnTrigger(DiscordClient sender, DSharpPlus.EventArgs.ReadyEventArgs e)
+        {
+            DateTime postStartUpTime = DateTime.UtcNow;
+
+            PrintInit();
+            Console.WriteLine($"\nStartup time: {(postStartUpTime - HallamBot.Program.preStartUpTime).TotalSeconds.ToString()} seconds...\n");
+
+
+            var status = new DiscordActivity("Hallam CS Activity", DSharpPlus.Entities.ActivityType.Watching);
+            ctx.UpdateStatusAsync(status);
+            
+
+            Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine("\n--------------------- All Systems Online ---------------------"); Console.ForegroundColor = ConsoleColor.White;
+
+            Console.WriteLine("\n\nListening...\n");
+            return Task.CompletedTask;
+        }
+
+        private static void PrintInit()
         {
             string onLoadGreeting = @"
                              | |  | |     | | |               |  _ \      | |  
@@ -26,14 +46,6 @@ namespace HallamBot.Events
             Console.Write("Made with <3 by Alta"); Console.ForegroundColor = ConsoleColor.White; Console.Write(" | ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(@"https://github.com/alta-sh"); Console.ForegroundColor = ConsoleColor.White;
-
-            var status = new DiscordActivity("Hallam CS Activity", DSharpPlus.Entities.ActivityType.Watching);
-            Bot.DiscordCtx.UpdateStatusAsync(status);
-
-            Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine("\n--------------------- All Systems Online ---------------------"); Console.ForegroundColor = ConsoleColor.White;
-
-            Console.WriteLine("\nListening...\n");
-            return Task.CompletedTask;
         }
     }
 }
