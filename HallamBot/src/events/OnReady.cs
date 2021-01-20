@@ -16,7 +16,7 @@ namespace HallamBot.Events
     public static class OnReady
     {
         private static readonly DiscordClient ctx = Init.Bot.DiscordCtx;
-        public static readonly string READ_WRITE_PATH = @"Directory.GetCurrentDirectory()" + @"..\..\..\..\..\src\";
+        public static readonly string READ_WRITE_PATH = @"Directory.GetCurrentDirectory()" + @"..\..\..\..\..\src\data\";
         public static Task OnTrigger(DiscordClient sender, DSharpPlus.EventArgs.ReadyEventArgs e)
         {
             DateTime postStartUpTime = DateTime.UtcNow;
