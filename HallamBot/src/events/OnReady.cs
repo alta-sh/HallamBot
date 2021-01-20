@@ -37,8 +37,7 @@ namespace HallamBot.Events
             if (Data.TopicData.CsTopics != null)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine(Data.TopicData.CsTopics.Subject.ToString() + " Data Model exists.");
-            } 
-            else
+            } else
             {
                 Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("COMPUTER SCIENCE Data Model does not exist.");
             }
@@ -46,8 +45,7 @@ namespace HallamBot.Events
             if (Data.TopicData.SoftEngTopics != null)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine(Data.TopicData.SoftEngTopics.Subject.ToString() + " Data Model exists.");
-            }
-            else
+            } else
             {
                 Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("SOFTWARE ENGINEERING Data Model does not exist.");
             }
