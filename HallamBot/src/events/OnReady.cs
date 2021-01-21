@@ -98,6 +98,7 @@ namespace HallamBot.Events
         }
 
         private static bool messageSent = false;
+        private static Lecture currentLecture;
         private static async Task LectureNotification(CancellationToken cancellationToken)
         {
             
@@ -110,14 +111,26 @@ namespace HallamBot.Events
                     {
                         if (lecture.Day.DayOfWeek == DateTime.Now.DayOfWeek)
                         {
-                            var minutesRemaining = (lecture.StartTime - DateTime.Now.TimeOfDay).Minutes;
-                            if ((minutesRemaining) > 0 && (minutesRemaining) < 30)
+                            if (lecture.StartTime.Hours == DateTime.Now.Hour)
                             {
-                                await ctx.GetChannelAsync(801191647274467328).Result.SendMessageAsync($"**{lecture.ModuleName}** is about to start in **{(lecture.StartTime - DateTime.Now.TimeOfDay).Minutes}** minutes!\n**Groups:** *{lecture.Groups}*\n**Lecturer:** *{lecture.Lecturer}*\n_______________________________________________");
-                                messageSent = true;
+                                var minutesRemaining = (lecture.StartTime - DateTime.Now.TimeOfDay).Minutes;
+                                if ((minutesRemaining) > 0 && (minutesRemaining) < 30)
+                                {
+                                    currentLecture = lecture;
+                                    await ctx.GetChannelAsync(801191647274467328).Result.SendMessageAsync($"**{lecture.ModuleName}** is about to start in **{(lecture.StartTime - DateTime.Now.TimeOfDay).Minutes}** minutes!\n**Groups:** *{lecture.Groups}*\n**Lecturer:** *{lecture.Lecturer}* \n {(lecture.IsTutorial ? "** --- This is a tutorial ---**" : "**--- This is a lecture ---**")} \n_______________________________________________");
+                                    messageSent = true;
+                                }
                             }
                         }
-                        
+                    } 
+                } else
+                {
+                    var checkMinutes = (currentLecture.StartTime - DateTime.Now.TimeOfDay).Minutes;
+
+                    if (checkMinutes <= 0)
+                    {
+                        messageSent = false;
+                        currentLecture = null;
                     }
                 }
                 await Task.Delay(1000 * 60, cancellationToken);
