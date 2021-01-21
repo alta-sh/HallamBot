@@ -14,7 +14,7 @@ HallamBot is a Discord bot made in .Net Core using the DSharp Discord API Wrappe
 The purpose of this bot is to provide University related help in a Computer Science student Discord server.
 
 ### What can it do?
-So far the bot will notify in a channel within the server approximately 30 minutes (give or take 5 minutes), before a lecture or a tutorial starts, if you opt into `Lecture Alerts` you will be pinged when this happens. There are a lot of plans for the future of this bot and I'm open to suggestions via DM, development is already underway for displaying the days until the next assignment or exam due date along with feedback return dates.
+So far the bot will notify in a channel within the server approximately 30 minutes (give or take 5 minutes), before a lecture or a tutorial starts, if you opt into `Lecture Alerts` you will be pinged when this happens. There are a lot of plans for the future of this bot and I'm open to suggestions via DM. Development is already underway for displaying the days until the next assignment or exam due date along with feedback return dates.
 
 ### Commands:
 
