@@ -17,6 +17,7 @@ namespace HallamBot
         {
             preStartUpTime = DateTime.UtcNow;
             MainAsync().GetAwaiter().GetResult();
+            Console.ReadKey();
         }
 
         static async Task MainAsync()
@@ -25,6 +26,7 @@ namespace HallamBot
 
             await Init.Bot.DiscordCtx.ConnectAsync();
             await Task.Delay(-1);
+            Console.ReadKey();
         }
     }
 }

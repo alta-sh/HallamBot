@@ -19,7 +19,7 @@ namespace HallamBot.Events
     public static class OnReady
     {
         private static readonly DiscordClient ctx = Init.Bot.DiscordCtx;
-        public static readonly string READ_WRITE_PATH = @"Directory.GetCurrentDirectory()" + @"..\..\..\..\..\src\data\";
+        public static readonly string READ_WRITE_PATH = @$"{Directory.GetDirectoryRoot(Directory.GetCurrentDirectory())}";
         public static Timetable Timetable;
         public static Task OnTrigger(DiscordClient sender, DSharpPlus.EventArgs.ReadyEventArgs e)
         {
@@ -117,7 +117,7 @@ namespace HallamBot.Events
                                 if ((minutesRemaining) > 0 && (minutesRemaining) < 30)
                                 {
                                     currentLecture = lecture;
-                                    await ctx.GetChannelAsync(801191647274467328).Result.SendMessageAsync($"**{lecture.ModuleName}** is about to start in **{(lecture.StartTime - DateTime.Now.TimeOfDay).Minutes}** minutes!\n**Groups:** *{lecture.Groups}*\n**Lecturer:** *{lecture.Lecturer}* \n {(lecture.IsTutorial ? "** --- This is a tutorial ---**" : "**--- This is a lecture ---**")} \n_______________________________________________");
+                                    await ctx.GetChannelAsync(801886321395761152).Result.SendMessageAsync($"**{lecture.ModuleName}** is about to start in **{(lecture.StartTime - DateTime.Now.TimeOfDay).Minutes}** minutes!\n**Groups:** *{lecture.Groups}*\n**Lecturer:** *{lecture.Lecturer}* \n {(lecture.IsTutorial ? "** --- This is a tutorial ---**" : "**--- This is a lecture ---**")} \n_______________________________________________");
                                     messageSent = true;
                                 }
                             }
