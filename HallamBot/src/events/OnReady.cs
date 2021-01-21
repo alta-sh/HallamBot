@@ -101,10 +101,10 @@ namespace HallamBot.Events
         private static Lecture currentLecture;
         private static async Task LectureNotification(CancellationToken cancellationToken)
         {
-            
             while (true)
             {
-
+                Random rand = new Random();
+                int recallTime = rand.Next(1500, 5000);
                 if(!messageSent)
                 {
                     foreach(var lecture in Timetable.Lectures)
@@ -133,7 +133,7 @@ namespace HallamBot.Events
                         currentLecture = null;
                     }
                 }
-                await Task.Delay(1000 * 60, cancellationToken);
+                await Task.Delay(recallTime * 60, cancellationToken);
                 if (cancellationToken.IsCancellationRequested)
                     break;
             }
