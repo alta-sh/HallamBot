@@ -28,7 +28,8 @@ namespace HallamBot.Init
                 CaseSensitive = false,
                 EnableDms = true,
                 EnableMentionPrefix = true,
-                DmHelp = true,
+                DmHelp = false,
+                EnableDefaultHelp = false
             };
 
             Commands = discord.UseCommandsNext(CommandsConfig);
