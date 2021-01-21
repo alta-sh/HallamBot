@@ -31,34 +31,13 @@ namespace HallamBot.Commands
         }
         
         [Command("date")]
-        public async Task Date(CommandContext ctx, string subject = null, string topic = null)
+        public async Task Date(CommandContext ctx)
         {
             TimeSpan timeSpan = new TimeSpan(DateTime.Now.TimeOfDay.Hours, DateTime.Now.TimeOfDay.Minutes, DateTime.Now.TimeOfDay.Seconds);
             DateTime dateinfo = DateTime.Today.Add(timeSpan);
             
-            if (subject == null)
-                await ctx.Channel.SendMessageAsync($"The day is **{dateinfo.DayOfWeek}** (*{dateinfo.ToShortDateString()}*) and it is **{dateinfo.ToString("hh:mmtt")}**. :stopwatch:");
-            if (subject.ToLower() == "cs")
-            {
-                string output = "";
-                if (topic == null)
-                {
-                    foreach(var t in Data.TopicData.CsTopics.Topics)
-                    {
-                        output += ($"\n\n**__{t.Name}__:**\n");
-                    
-                        foreach(var a in t.Assignments)
-                        {
-                            output += $"**{a.AssignmentTitle}** : Weight: **{a.Percentage}%**\n" +
-                                $"Due date: **{a.Deadline.ToShortDateString()}**  | Feedback return: **{a.FeedbackReturn.ToShortDateString()}**\n\n";
-                        }
-                        await ctx.Channel.SendMessageAsync(output + "\n\n");
-                        output = "\n\n";
-                        await Task.Delay(1000);
-                    }
-                    
-                } 
-            }
+            
+            await ctx.Channel.SendMessageAsync($"The day is **{dateinfo.DayOfWeek}** (*{dateinfo.ToShortDateString()}*) and it is **{dateinfo.ToString("hh:mmtt")}**. :stopwatch:");
         }
     }
 }

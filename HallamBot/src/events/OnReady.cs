@@ -10,6 +10,9 @@ using System.IO;
 using System.Text.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using HallamBot.data;
+using System.Linq;
+using HallamBot.models;
 
 namespace HallamBot.Events
 {
@@ -17,8 +20,12 @@ namespace HallamBot.Events
     {
         private static readonly DiscordClient ctx = Init.Bot.DiscordCtx;
         public static readonly string READ_WRITE_PATH = @"Directory.GetCurrentDirectory()" + @"..\..\..\..\..\src\data\";
+        public static Timetable Timetable;
         public static Task OnTrigger(DiscordClient sender, DSharpPlus.EventArgs.ReadyEventArgs e)
         {
+            Timetable = new Timetable();
+            Task.Run(async () => await LectureNotification(new CancellationToken()));
+
             DateTime postStartUpTime = DateTime.UtcNow;
 
             PrintInit();
@@ -87,6 +94,35 @@ namespace HallamBot.Events
                 Console.WriteLine("Json file found for data... importing now... ");
                 Data.TopicData.CsTopics = JsonConvert.DeserializeObject<TopicList>(File.ReadAllText(READ_WRITE_PATH + @"CsTopicData.json"));
                 Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("All data has successfully been imported!"); Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+
+        private static bool messageSent = false;
+        private static async Task LectureNotification(CancellationToken cancellationToken)
+        {
+            
+            while (true)
+            {
+
+                if(!messageSent)
+                {
+                    foreach(var lecture in Timetable.Lectures)
+                    {
+                        if (lecture.Day.DayOfWeek == DateTime.Now.DayOfWeek)
+                        {
+                            var minutesRemaining = (lecture.StartTime - DateTime.Now.TimeOfDay).Minutes;
+                            if ((minutesRemaining) > 0 && (minutesRemaining) < 30)
+                            {
+                                await ctx.GetChannelAsync(801191647274467328).Result.SendMessageAsync($"**{lecture.ModuleName}** is about to start in **{(lecture.StartTime - DateTime.Now.TimeOfDay).Minutes}** minutes!\n**Groups:** *{lecture.Groups}*\n**Lecturer:** *{lecture.Lecturer}*\n_______________________________________________");
+                                messageSent = true;
+                            }
+                        }
+                        
+                    }
+                }
+                await Task.Delay(1000 * 60, cancellationToken);
+                if (cancellationToken.IsCancellationRequested)
+                    break;
             }
         }
 
