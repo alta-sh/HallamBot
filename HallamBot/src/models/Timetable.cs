@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HallamBot.models
+namespace HallamBot.Models
 {
     public class Timetable
     {

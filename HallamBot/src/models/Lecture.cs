@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HallamBot.models
+namespace HallamBot.Models
 {
     public class Lecture
     {

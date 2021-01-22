@@ -1,9 +1,9 @@
-﻿using HallamBot.models;
+﻿using HallamBot.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HallamBot.data
+namespace HallamBot.Data
 {
     public static class TimetableData
     {

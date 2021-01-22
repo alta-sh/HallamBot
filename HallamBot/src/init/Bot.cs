@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DSharpPlus.Entities;
 using DSharpPlus.CommandsNext;
-using HallamBot.models;
+using HallamBot.Models;
 
 namespace HallamBot.Init
 {

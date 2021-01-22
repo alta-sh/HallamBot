@@ -10,9 +10,8 @@ using System.IO;
 using System.Text.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using HallamBot.data;
+using HallamBot.Data;
 using System.Linq;
-using HallamBot.models;
 
 namespace HallamBot.Events
 {
