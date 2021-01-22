@@ -20,8 +20,13 @@ namespace HallamBot.Events
         private static readonly DiscordClient ctx = Init.Bot.DiscordCtx;
         public static readonly string READ_WRITE_PATH = @$"{Directory.GetDirectoryRoot(Directory.GetCurrentDirectory())}";
         public static Timetable Timetable;
+        public static string AssignmentsDeadlineString = "";
+        public static List<Models.Assignment> AssDueList = new List<Models.Assignment>();
         public static Task OnTrigger(DiscordClient sender, DSharpPlus.EventArgs.ReadyEventArgs e)
         {
+            
+
+
             Timetable = new Timetable();
             Task.Run(async () => await LectureNotification(new CancellationToken()));
 
@@ -58,6 +63,17 @@ namespace HallamBot.Events
 
             Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Models successfully built!"); Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n\nListening...\n");
+
+            foreach (var t in Data.TopicData.CsTopics.Topics)
+            {
+                foreach (var a in t.Assignments)
+                {
+                    if (a.Deadline.DayOfYear > DateTime.Now.DayOfYear)
+                    {
+                        AssignmentsDeadlineString += $"\n __**{t.Name}**__: \n*{a.AssignmentTitle}* - Worth: **{a.Percentage}%** \n Due in: **{a.Deadline.DayOfYear - DateTime.Now.DayOfYear} days**\n-----------------------\n";
+                    }
+                }
+            }
             return Task.CompletedTask;
         }
 

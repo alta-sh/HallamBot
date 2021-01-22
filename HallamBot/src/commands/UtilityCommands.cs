@@ -75,5 +75,12 @@ namespace HallamBot.Commands
                 }
             }
         }
+
+
+        [Command("deadlines")]
+        public async Task Deadlines(CommandContext ctx)
+        {
+            await ctx.Channel.SendMessageAsync(Events.OnReady.AssignmentsDeadlineString);
+        }
     }
 }

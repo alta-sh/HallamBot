@@ -35,8 +35,6 @@ namespace HallamBot.Init
 
             Commands = discord.UseCommandsNext(CommandsConfig);
             Commands.RegisterCommands<HallamBot.Commands.UtilityCommands>();
-            Commands.RegisterCommands<HallamBot.Commands.TestCommands>();
-
 
             DiscordCtx = discord;
             DiscordCtx.Ready += Events.OnReady.OnTrigger;
