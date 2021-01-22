@@ -111,7 +111,7 @@ namespace HallamBot.Events
                     {
                         if (lecture.Day.DayOfWeek == DateTime.Now.DayOfWeek)
                         {
-                            if ((lecture.StartTime.Hours - 1) == DateTime.Now.Hour)
+                            if ((lecture.StartTime - (new TimeSpan(0, 30, 0)) <= DateTime.Now.TimeOfDay))
                             {
                                 var minutesRemaining = (lecture.StartTime - DateTime.Now.TimeOfDay).Minutes;
                                 if ((minutesRemaining) > 0 && (minutesRemaining) < 30)
