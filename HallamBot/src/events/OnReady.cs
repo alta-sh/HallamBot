@@ -133,7 +133,7 @@ namespace HallamBot.Events
                                 {
                                     currentLecture = lecture;
                                     // gets the mention tag from guild roles instead of mentioning explicity in a string.
-                                    await ctx.GetChannelAsync(801191647274467328).Result.SendMessageAsync($"{ctx.GetChannelAsync(801191647274467328).Result.Guild.GetRole(801920056246272082).Mention} \n **{lecture.ModuleName}** is about to start in **{(lecture.StartTime - DateTime.Now.TimeOfDay).Minutes}** minutes!\n**Groups:** *{lecture.Groups}*\n**Lecturer:** *{lecture.Lecturer}* \n {(lecture.IsTutorial ? "** --- This is a tutorial ---**" : "**--- This is a lecture ---**")} \n_______________________________________________");
+                                    await ctx.GetChannelAsync(801886321395761152).Result.SendMessageAsync($"{ctx.GetChannelAsync(801191647274467328).Result.Guild.GetRole(801920056246272082).Mention} \n **{lecture.ModuleName}** is about to start in **{(lecture.StartTime - DateTime.Now.TimeOfDay).Minutes}** minutes!\n**Groups:** *{lecture.Groups}*\n**Lecturer:** *{lecture.Lecturer}* \n {(lecture.IsTutorial ? "** --- This is a tutorial ---**" : "**--- This is a lecture ---**")} \n_______________________________________________");
                                     messageSent = true;
                                 }
                             }
