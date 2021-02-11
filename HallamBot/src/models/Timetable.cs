@@ -66,7 +66,7 @@ namespace HallamBot.Models
                 Groups = "All",
                 IsDropIn = false,
                 Day = new DateTime(21, 01, 20),
-                StartTime = new TimeSpan(10, 0, 0)
+                StartTime = new TimeSpan(11, 0, 0)
             });
 
             Lectures.Add(new Lecture
